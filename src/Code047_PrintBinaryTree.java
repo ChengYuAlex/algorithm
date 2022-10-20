@@ -17,11 +17,10 @@ public class Code047_PrintBinaryTree {
     }
 
     /**
-     *
-     * @param head 传入头节点
+     * @param head   传入头节点
      * @param height 头节点高度
-     * @param to 节点间父子关系标识
-     * @param len 每个节点打印所占宽度
+     * @param to     节点间父子关系标识
+     * @param len    每个节点打印所占宽度
      */
     public static void printInOrder(Node head, int height, String to, int len) {
         if (head == null) {
@@ -53,6 +52,7 @@ public class Code047_PrintBinaryTree {
         }
         return buf.toString();
     }
+
     public static void main(String[] args) {
         Node head = new Node(1);
         head.left = new Node(-222222222);
