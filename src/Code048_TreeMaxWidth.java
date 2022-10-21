@@ -39,13 +39,13 @@ public class Code048_TreeMaxWidth {
             }
             if (curNodeLevel == curLevel) {
                 curLevelNodes++;
-            } else {
+            } else { // 每一层的最左节点会走else
                 max = Math.max(max, curLevelNodes);
                 curLevel++;
                 curLevelNodes = 1;
             }
         }
-        // 最后一层的最右节点走不到41行的else, 所以这里需要max()
+        // 最后一层的最右节点走不到42行的else, 所以这里需要max()
         max = Math.max(max, curLevelNodes);
         return max;
     }
