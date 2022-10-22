@@ -1,5 +1,6 @@
 public class Code049_SuccessorNode {
     // X节点的后继节点: 中序遍历时, 该节点的下一个节点
+
     // X有右树, 往下看, X作为头, 后继为右树的最左节点
     // X无右树, 往上看, X作为左树最右节点, 后继就是头
 
@@ -18,7 +19,7 @@ public class Code049_SuccessorNode {
         if (node == null) {
             return node;
         }
-        if (node.right != null) {
+        if (node.right != null) { // 有右子树
             return getLeftMost(node.right);
         } else { // 无右子树
             Node parent = node.parent;
