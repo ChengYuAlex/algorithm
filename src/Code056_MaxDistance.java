@@ -30,12 +30,14 @@ public class Code056_MaxDistance {
         return max;
     }
 
+    // 返回节点表
     public static ArrayList<Node> getPrelist(Node head) {
         ArrayList<Node> arr = new ArrayList<>();
         fillPreList(head, arr);
         return arr;
     }
 
+    // 将节点存入ArrayList
     public static void fillPreList(Node head, ArrayList<Node> arr) {
         if (head == null) {
             return;
@@ -45,6 +47,7 @@ public class Code056_MaxDistance {
         fillPreList(head.right, arr);
     }
 
+    // 返回 <节点, 父节点> 表
     public static HashMap<Node, Node> getParentMap(Node head) {
         HashMap<Node, Node> map = new HashMap<>();
         map.put(head, null);
@@ -52,6 +55,7 @@ public class Code056_MaxDistance {
         return map;
     }
 
+    // 将 <节点, 父节点> 存入HashMap
     public static void fillParentMap(Node head, HashMap<Node, Node> parentMap) {
         if (head.left != null) {
             parentMap.put(head.left, head);
@@ -63,7 +67,9 @@ public class Code056_MaxDistance {
         }
     }
 
+    //计算 o1, o2 两个节点间的距离
     public static int distance(HashMap<Node, Node> parentMap, Node o1, Node o2) {
+        // o1节点向上迭代寻找父节点, 并将父节点存入o1Set
         HashSet<Node> o1Set = new HashSet<>();
         Node cur = o1;
         o1Set.add(cur);
@@ -71,23 +77,33 @@ public class Code056_MaxDistance {
             cur = parentMap.get(cur);
             o1Set.add(cur);
         }
+
+        // o1节点向上迭代寻找父节点
         cur = o2;
         while (!o1Set.contains(cur)) {
             cur = parentMap.get(cur);
         }
+
+        // 寻得 o1, o2 两个节点的最小公共祖先
         Node lowestAncestor = cur;
+
+        // 求 o1 到 最小公共祖先的距离
         cur = o1;
         int distance1 = 1;
         while (cur != lowestAncestor) {
             cur = parentMap.get(cur);
             distance1++;
         }
+
+        // 求 o2 到 最小公共祖先的距离
         cur = o2;
         int distance2 = 1;
         while (cur != lowestAncestor) {
             cur = parentMap.get(cur);
             distance2++;
         }
+
+        // 返回 o1, o2 节点距离
         return distance1 + distance2 - 1;
     }
 
