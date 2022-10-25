@@ -19,7 +19,9 @@ public class Code056_MaxDistance {
         if (head == null) {
             return 0;
         }
+        // 包含所有节点的ArrayList
         ArrayList<Node> arr = getPrelist(head);
+        // <子节点, 父节点> HashMap
         HashMap<Node, Node> parentMap = getParentMap(head);
         int max = 0;
         for (int i = 0; i < arr.size(); i++) {
@@ -78,7 +80,7 @@ public class Code056_MaxDistance {
             o1Set.add(cur);
         }
 
-        // o1节点向上迭代寻找父节点
+        // o2节点向上迭代寻找父节点
         cur = o2;
         while (!o1Set.contains(cur)) {
             cur = parentMap.get(cur);
@@ -129,6 +131,7 @@ public class Code056_MaxDistance {
         Info rightInfo = process(x.right);
 
         int height = Math.max(leftInfo.height, rightInfo.height) + 1;
+
         int p1 = leftInfo.maxDistance;
         int p2 = rightInfo.maxDistance;
         int p3 = leftInfo.height + rightInfo.height + 1;

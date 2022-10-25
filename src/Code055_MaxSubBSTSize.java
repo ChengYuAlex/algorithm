@@ -78,6 +78,7 @@ public class Code055_MaxSubBSTSize {
         if (leftBST && rightBST
                 && (leftInfo == null || leftInfo.max < x.val)
                 && (rightInfo == null || x.val < rightInfo.min)) {
+
             maxBSTSubtreeSize = (leftInfo == null ? 0 : leftInfo.allSize)
                     + (rightInfo == null ? 0 : rightInfo.allSize)
                     + 1;

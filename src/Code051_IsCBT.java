@@ -38,12 +38,14 @@ public class Code051_IsCBT {
             ) {
                 return false;
             }
+
             if (l != null) {
                 queue.add(l);
             }
             if (r != null) {
                 queue.add(r);
             }
+            // 遇到过左右两个孩子不双全的节点
             if (l == null || r == null) {
                 leaf = true;
             }
@@ -71,12 +73,12 @@ public class Code051_IsCBT {
         }
     }
 
-    public static Info process(Node X) {
-        if (X == null) {
+    public static Info process(Node x) {
+        if (x == null) {
             return new Info(true, true, 0);
         }
-        Info leftInfo = process(X.left);
-        Info rightInfo = process(X.right);
+        Info leftInfo = process(x.left);
+        Info rightInfo = process(x.right);
 
         int height = Math.max(leftInfo.height, rightInfo.height) + 1;
         boolean isFull = leftInfo.isFull
@@ -86,7 +88,7 @@ public class Code051_IsCBT {
         if (isFull) {
             isCBT = true;
         } else { // 不是满二叉树
-            // 1) 左树高度 = 右树高度+1; 左完右满
+            // 1) 左树高度 = 右树高度 + 1; 左完右满
             if (leftInfo.isCBT
                     && rightInfo.isFull
                     && leftInfo.height == rightInfo.height + 1) {
