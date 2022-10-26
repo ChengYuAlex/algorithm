@@ -14,8 +14,8 @@ public class Code057_MaxSubBSTHead {
     }
 
     public static int getBSTSize(Node head) {
-    // 以head为头节点的树是BST, 返回树的大小
-    // 以head为头节点的树不是BST, 则返回0
+        // 以head为头节点的树是BST, 返回树的大小
+        // 以head为头节点的树不是BST, 则返回0
         if (head == null) {
             return 0;
         }
@@ -45,7 +45,7 @@ public class Code057_MaxSubBSTHead {
             return null;
         }
         if (getBSTSize(head) != 0) {
-        // 以head为头节点的树是BST二叉搜索树
+            // 以head为头节点的树是BST二叉搜索树
             return head;
         }
         Node leftAns = maxSubBSTHead1(head.left);
@@ -104,13 +104,14 @@ public class Code057_MaxSubBSTHead {
         if ((leftInfo == null || (leftInfo.maxSubBSTHead == x.left && leftInfo.max < x.value))
 
                 && (rightInfo == null || (rightInfo.maxSubBSTHead == x.right && rightInfo.min > x.value))) {
+            // 以x为头节点的二叉树是耳茶搜索树
 
             maxSubBSTHead = x;
             maxSubBSTSize = (leftInfo == null ? 0 : leftInfo.maxSubBSTSize)
                     + (rightInfo == null ? 0 : rightInfo.maxSubBSTSize) + 1;
         }
         return new Info(maxSubBSTHead, maxSubBSTSize, min, max);
-        }
+    }
 
 
     // for test
