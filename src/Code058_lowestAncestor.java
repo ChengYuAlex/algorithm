@@ -77,6 +77,7 @@ public class Code058_lowestAncestor {
 
         boolean findA = x == a || leftInfo.findA || rightInfo.findA;
         boolean findB = x == b || leftInfo.findB || rightInfo.findB;
+
         Node ans = null;
         // 整棵树中有答案
         if (findA && findB) {
