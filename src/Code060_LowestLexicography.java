@@ -6,7 +6,7 @@ import java.util.TreeSet;
     贪心算法:
     追求局部最优解 -> 达成全局最优解
     贪心贪错例子1:
-    {"b", "ba"}
+    {"b", "ba"} b+ba->bba ; ba+b->bab
     贪心贪错例子2:
     A->B 只能向下或向右
     B->A 只能向上或向左
@@ -14,10 +14,14 @@ import java.util.TreeSet;
     0 0 1 0 1
     1 0 1 0 0
     0 0 1 1 B
+
+    A->B 6 B->A 1 sum:7
+    A->B 4 B->A 4 sum:8
      */
 public class Code060_LowestLexicography {
     // 字符串组成的数组拼接后字典序最小的结果
 
+    //暴力方法
     public static String lowestString1(String[] strs) {
         if (strs == null || strs.length == 0) {
             return "";
@@ -46,7 +50,7 @@ public class Code060_LowestLexicography {
     }
 
     // {"abc", "cks", "bct"}
-    // 0 1 2
+    //    0      1      2
     // removeIndexString(arr , 1) -> {"abc", "bct"}
     // 移除指定下标字符
     public static String[] removeIndexString(String[] arr, int index) {
@@ -77,6 +81,8 @@ public class Code060_LowestLexicography {
         @Override
         public int compare(String o1, String o2) {
             return (o1 + o2).compareTo(o2 + o1);
+            //而不是
+            //return o1.compareTo(o2);
         }
     }
 
