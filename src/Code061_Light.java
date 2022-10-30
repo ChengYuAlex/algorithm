@@ -1,7 +1,7 @@
 import java.util.HashSet;
 
 public class Code061_Light {
-    // 点灯问题
+    // 点亮str中所有需要点亮的位置至少需要几盏灯
     /*
     给定一个字符串str，只由‘X’和‘.’两种字符构成。
     ‘X’表示墙，不能放灯，也不需要点亮
