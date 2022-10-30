@@ -69,13 +69,14 @@ public class Code061_Light {
             if (c == 'X') {
                 light += (cur + 2) / 3;
                 cur = 0;
-            }else {
+            } else {
                 cur++;
             }
         }
-        light +=(cur+2)/3;
+        light += (cur + 2) / 3;
         return light;
     }
+
     // for test
     public static String randomString(int len) {
         char[] res = new char[(int) (Math.random() * len) + 1];
