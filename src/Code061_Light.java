@@ -31,12 +31,15 @@ public class Code061_Light {
             return lights.size();
         } else { // str还没结束
             // i X .
+            // 不放灯
             int no = process(str, index + 1, lights);
-            int yes = Integer.MAX_VALUE;
-            if (str[index] == '.') {
+            // 想放灯
+            int yes = Integer.MAX_VALUE; // 默认是'X', 不能放灯
+            if (str[index] == '.') { // 是'.', 放灯
                 lights.add(index);
                 yes = process(str, index + 1, lights);
-                // lights是HashSet容器, 递归后得消除本次对lights的影响
+                // 例如'...'运行顺序(返回结果)是 NNN(M),NNY(M),NYN(1),NYY(2),YNN(M),YNY(2),YYN(2),YYY(3)
+                // 先运行NYY(2), 不lights.remove(1)的话, YNY会多计算.
                 lights.remove(index);
             }
             return Math.min(no, yes);
