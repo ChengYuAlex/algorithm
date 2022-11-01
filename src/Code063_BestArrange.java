@@ -61,7 +61,7 @@ public class Code063_BestArrange {
         return ans;
     }
 
-    // 会议的开始时间和结束时间都是数值, 不会<0;
+    // 会议的开始时间和结束时间都是非负数;
     public static int bestArrange2(Program[] programs) {
         Arrays.sort(programs, new ProgramComparator());
         int timeLine = 0;
