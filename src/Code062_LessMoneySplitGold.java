@@ -26,6 +26,7 @@ public class Code062_LessMoneySplitGold {
             return pre;
         }
         int ans = Integer.MAX_VALUE;
+        // 从数组中选两个下标, 进行合并
         for (int i = 0; i < arr.length; i++) {
             // 从 j = i + 1 开始, 避免重复. [1,2]合并和[2,1]合并一样
             for (int j = i + 1; j < arr.length; j++) {
@@ -35,7 +36,7 @@ public class Code062_LessMoneySplitGold {
         return ans;
     }
 
-    // 复制数组, 排除掉已经合并的下标
+    // 复制数组, 排除掉已经合并的下标, 添加合并后的数
     public static int[] copyAndMergeTwo(int[] arr, int i, int j) {
         int[] ans = new int[arr.length - 1];
         int ansi = 0;
