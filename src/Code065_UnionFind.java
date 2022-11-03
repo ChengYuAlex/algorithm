@@ -25,9 +25,9 @@ public class Code065_UnionFind {
     3）如果方法调用很频繁，那么单次调用的代价为O(1)，两个方法都如此
 
     应用:
-    1) 连通性的问题
-    2) 解决两大块区域的合并问题
-    3)常用在图等领域中
+    1) isSameSet 连通性的问题
+    2) union 解决两大块区域的合并问题
+    3) 常用在图等领域中
      */
 
     public static class Node<V> {
@@ -57,6 +57,7 @@ public class Code065_UnionFind {
 
         // 输入一个节点,返回其并查集代表节点
         public Node<V> findRepresentative(Node<V> cur) {
+            // 节点往上找代表点的过程，把沿途的链变成扁平的
             Stack<Node<V>> path = new Stack<>();
             while (cur != parents.get(cur)) {
                 path.push(cur);
@@ -80,6 +81,7 @@ public class Code065_UnionFind {
             Node<V> aRepresentative = findRepresentative(nodes.get(a));
             Node<V> bRepresentative = findRepresentative(nodes.get(a));
             if (aRepresentative != bRepresentative) {
+                // 小集合挂在大集合的下面
                 int aSetSize = sizeMap.get(aRepresentative);
                 int bSetSize = sizeMap.get(bRepresentative);
                 Node<V> big = aSetSize > bSetSize ? aRepresentative : bRepresentative;
