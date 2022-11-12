@@ -41,11 +41,11 @@ public class Code068_NumberOfIslandsII {
     你是否能在 O(k log mn) 的时间复杂度程度内完成每次的计算？（k 表示 positions 的长度）
      */
 
-    public static List<Integer> numIslands21(int m,int n, int[][] positions){
-        UnionFind1 uf = new UnionFind1(m,n);
+    public static List<Integer> numIslands21(int m, int n, int[][] positions) {
+        UnionFind1 uf = new UnionFind1(m, n);
         List<Integer> ans = new ArrayList<>();
-        for (int[] position:positions) {
-            ans.add(uf.connect(position[0],position[1]));
+        for (int[] position : positions) {
+            ans.add(uf.connect(position[0], position[1]));
         }
         return ans;
     }
@@ -124,11 +124,11 @@ public class Code068_NumberOfIslandsII {
     }
 
     // 如果m*n比较大, 会经历很重的初始化, 而k比较小, 优化方法
-    public static List<Integer> numIslands22(int m , int n, int[][] positions){
+    public static List<Integer> numIslands22(int m, int n, int[][] positions) {
         UnionFind2 uf = new UnionFind2();
         List<Integer> ans = new ArrayList<>();
         for (int[] position : positions) {
-            ans.add(uf.connect(position[0],position[1]));
+            ans.add(uf.connect(position[0], position[1]));
         }
         return ans;
     }
