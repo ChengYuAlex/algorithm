@@ -2,7 +2,7 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class Code071_BFS {
+public class Code071_GraphBFS {
 //     从node出发, 进行宽度优先遍历
     // 存起点到set
     // 入队
