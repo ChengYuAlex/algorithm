@@ -11,6 +11,7 @@ import java.util.HashMap;
 // Array排序 put到ans表 输出
 public class Code075_TopologicalOrderDFS1 {
     // 不要提交这个类
+    // No need to submit
     public static class DirectedGraphNode {
         public int label;
         public ArrayList<DirectedGraphNode> neighbors;
@@ -21,7 +22,8 @@ public class Code075_TopologicalOrderDFS1 {
         }
     }
 
-    //提交下面的
+    // 提交下面的
+    // Submit the following
     public static class Record {
         public DirectedGraphNode node;
         public int deep;
