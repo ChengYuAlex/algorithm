@@ -12,6 +12,12 @@ public class Code078_Prim {
         }
     }
 
+    // 1) 从任意节点出发来寻找最小生成树
+    // 2) 某个点加入到被选取的点中后, 解锁这个点出发的所有新的边
+    // 3) 在所有解锁的边中选最小的边, 然后看看这个边会不会形成环
+    // 4) 如果会, 不要当前边, 继续考察剩下解锁的边中最小的边, 重复3)
+    // 5) 如果不会, 要当前边, 将该边的指向点加入到被选取的点中, 重复2)
+    // 6) 当所有点都被选取, 最小生成树就得到了
     public static Set<Edge> primMST(Graph graph) {
         // 解锁的边进入小根堆
         PriorityQueue<Edge> priorityQueue = new PriorityQueue<>(new EdgeComparator());
@@ -56,20 +62,25 @@ public class Code078_Prim {
             distances[i] = graph[0][i];
         }
         int sum = 0;
+        // 待连接size-1个点, 因为开始已选定一个开始点
         for (int i = 1; i < size; i++) {
             int minPath = Integer.MAX_VALUE;
             int minIndex = -1;
+            // 找到从已连接点集到未连接点集的最小边
             for (int j = 0; j < size; j++) {
                 if (!visit[j] && distances[j] < minPath) {
                     minPath = distances[j];
                     minIndex = j;
                 }
             }
+            // 不存在,即死胡同点 直接返回
             if (minIndex == -1) {
                 return sum;
             }
+            // 将找到的最小边指向的点 归入 已连接点集
             visit[minIndex] = true;
             sum += minPath;
+            // 遍历新加入点 对 各未连接点的距离
             for (int j = 0; j < size; j++) {
                 if (!visit[j] && distances[j] > graph[minIndex][j]) {
                     distances[j] = graph[minIndex][j];
