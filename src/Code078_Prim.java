@@ -57,7 +57,7 @@ public class Code078_Prim {
         int size = graph.length;
         int[] distances = new int[size];
         boolean[] visit = new boolean[size];
-        visit[0] = true;
+        visit[0] = true; //判断是否已选取
         for (int i = 0; i < size; i++) {
             distances[i] = graph[0][i];
         }
